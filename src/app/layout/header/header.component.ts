@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from "jquery";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  toggle() {
+    // console.log(e);
+    var wrapper = document.querySelector("body");
+    wrapper.classList.toggle("sb-sidenav-toggled");
+  }
+
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate([""]);
   }
 
 }

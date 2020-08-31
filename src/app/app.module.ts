@@ -7,11 +7,16 @@ import { LandingPageComponent } from './layout/landing-page/landing-page.compone
 import { HomeComponent } from './layout/home/home.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { LoginComponent } from './security/login/login.component';
 import { SignUpComponent } from './security/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForumComponent } from './components/sections/forum/forum.component';
+import { AboutUsComponent } from './components/sections/about-us/about-us.component';
+import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+
+
 
 
 
@@ -22,10 +27,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
+  
     SidebarComponent,
     LoginComponent,
     SignUpComponent,
+    ForumComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    NavbarComponent,
+
+ 
     
   ],
   imports: [

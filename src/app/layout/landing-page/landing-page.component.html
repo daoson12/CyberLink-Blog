@@ -3,28 +3,27 @@
         <div class="navbar-header d-flex col">
             <a href="#page-top" class="logo navbar-brand"><img src="assets/img/cyberlinklogo.jpeg" alt="CYBERLINK" class="img-fluid"></a>
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-        <span class="navbar-toggler-icon"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
 
-      </button>
+            </button>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
-                <li class="nav-item active"><a href="#hero" class="nav-link">
-            Home</a></li>
+                <li class="nav-item active"><a href="#hero" class="nav-link" style="
+                    color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> Home</a></li>
 
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
+                <li class="nav-item"> <a class="nav-link js-scroll-trigger" routerLink="about-us" style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; ">About Us</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
+                    <a class="nav-link js-scroll-trigger" routerLink="contact-us" style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">Contact Us</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Forum</a>
+                    <a class="nav-link js-scroll-trigger" routerLink="forum" style="color: white; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; ">Forum</a>
                 </li>
 
 
@@ -35,7 +34,8 @@
                 <form class="form-inline my-2 my-lg-0">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"
+                                    aria-hidden="true"></i></span>
                         </div>
                         <input type="text" class="form-control" placeholder="Search........." aria-label="Username" aria-describedby="basic-addon1">
                     </div>
@@ -43,13 +43,22 @@
 
                 <li class="nav-item">
 
-                    <a class="nav-link" (click)="loginButtonClicked()"><button class="btn btn-primary"> <span><i class="fa fa-sign-in" aria-hidden="true"></i></span> Login</button></a>
+                    <a class="nav-link" (click)="loginButtonClicked()"><button class="btn btn-primary"> <span><i
+                                    class="fa fa-sign-in" aria-hidden="true"></i></span> Login</button></a>
                 </li>
             </ul>
         </div>
     </nav>
 
 </header>
+
+<form class="form-inline" role="form">
+    <div class="form-group has-success has-feedback">
+        <label class="control-label" for="inputSuccess4"></label>
+        <input type="text" class="form-control search-query" id="inputSuccess4">
+        <span class="fa fa-user form-control-feedback"></span>
+    </div>
+</form>
 <!-- ======= Hero Section ======= -->
 <section id="hero">
     <div class="hero-container">
@@ -63,7 +72,8 @@
                 <div class="carousel-item active" style="background: url(assets/img/slide/parallax-mobile1.png);">
                     <div class="carousel-container">
                         <div class="carousel-content">
-                            <h2 class="animated fadeInDown"><span>CyberLink</span> Blog</h2>
+                            <h2 class="animated fadeInDown" style="
+                            color: white; text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkblue;"><span>CYBERLINK</span> Blog</h2>
                             <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et
                                 tempore modi architecto.</p>
                             <div>
@@ -173,7 +183,8 @@
         <div class="container my-4" style="background-color: white;">
             <br><br>
             <header class="lastestBlog text-center">
-                <h2>Latest from the blog</h2>
+                <h2 style="  color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+             ">Latest from the blog</h2>
                 <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </header>
             <hr class="my-4">
@@ -183,8 +194,10 @@
 
                 <!--Controls-->
                 <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
+                            class="fa fa-chevron-left"></i></a>
+                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                            class="fa fa-chevron-right"></i></a>
                 </div>
                 <!--/.Controls-->
 
@@ -382,7 +395,10 @@
         <div class="container mt-4" style="background-color: white;">
             <br><br>
             <header class="lastestBlog text-center ">
-                <h2>Post from the blog</h2>
+                <h2 style="
+                color: white;
+text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+             ">Post from the blog</h2>
                 <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </header>
             <hr class="my-4">
@@ -569,7 +585,8 @@
                         <div class="blog-posts">
                             <a href="#">
                                 <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/blog-33.jpg" alt="..." class="img-fluid"></div>
+                                    <div class="image"><img src="assets/img/blog-33.jpg" alt="..." class="img-fluid">
+                                    </div>
                                     <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> 500</div>
