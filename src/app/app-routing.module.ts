@@ -7,6 +7,8 @@ import { HomeComponent } from './layout/home/home.component';
 import { AboutUsComponent } from './components/sections/about-us/about-us.component';
 import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
 import { ForumComponent } from './components/sections/forum/forum.component';
+import{ViewPostComponent} from './components/view-post/view-post.component';
+
 
 
 
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path:'about-us', component: AboutUsComponent},
   {path:'contact-us', component: ContactUsComponent},
   {path:'forum', component: ForumComponent},
+  {path:'view-post', component:ViewPostComponent},
+
   {
     path:'home', component:HomeComponent,
     children: [
@@ -30,6 +34,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
 
 
 
