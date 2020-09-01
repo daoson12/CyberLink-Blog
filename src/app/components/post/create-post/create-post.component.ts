@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+declare const uploadImage :any;
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -9,7 +10,10 @@ export class CreatePostComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    uploadImage();
   }
+  
 
+  
 }
