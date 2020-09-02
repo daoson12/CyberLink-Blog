@@ -8,6 +8,7 @@ import { AboutUsComponent } from './components/sections/about-us/about-us.compon
 import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
 import { ForumComponent } from './components/sections/forum/forum.component';
 import{ViewPostComponent} from './components/view-post/view-post.component';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'contact-us', component: ContactUsComponent},
   {path:'forum', component: ForumComponent},
   {path:'view-post', component:ViewPostComponent},
+  {path:'page-not-found', component:PageNotFoundComponent},
 
   {
     path:'home', component:HomeComponent,
@@ -29,11 +31,14 @@ const routes: Routes = [
       { path: 'create-post', loadChildren: () => import('./components/post/create-post/create-post.module').then(m => m.CreatePostModule)},
       { path: 'post-list', loadChildren: () => import('./components/post/post-list/post-list.module').then(m => m.PostListModule)},
     ]
-  }
+  },
+
+  { path: "**", redirectTo: "page-not-found" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
 
 
 

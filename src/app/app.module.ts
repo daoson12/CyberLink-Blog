@@ -15,6 +15,7 @@ import { ForumComponent } from './components/sections/forum/forum.component';
 import { AboutUsComponent } from './components/sections/about-us/about-us.component';
 import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 // import * as $ from "jquery";
 
 
@@ -36,6 +37,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     AboutUsComponent,
     ContactUsComponent,
     NavbarComponent,
+    PageNotFoundComponent,
 
  
     

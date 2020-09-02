@@ -39,12 +39,39 @@
                 </div>
 
                 <div class="text-center p-t-12">
-                    <span class="txt1">
-                        Forgot
-                    </span>
-                    <a class="txt2" href="#">
-                        Password?
+
+                    <a class="txt2 " data-toggle="modal" data-target="#modelId">
+                        <span class="txt1">
+                            Forgot
+                        </span> Password?
                     </a>
+                    <div class="modal fade shadow" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header hoverImages">
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">Password Recovery</h3>
+                                    </div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                </div>
+                                <div class="modal-body pl-5 mt-3">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
+                                            <form>
+                                                <div class="form-group">
+                                                    <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required />
+                                                </div>
+                                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                    <a class="small btn">Return to login</a>
+                                                    <a class="btn btn-default">Reset Password</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="text-center p-t-136">
