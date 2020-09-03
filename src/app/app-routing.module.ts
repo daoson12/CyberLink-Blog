@@ -30,6 +30,8 @@ const routes: Routes = [
       { path: '', loadChildren: () => import('./layout/dashboard/dashboard.module').then(m => m.DashboardModule)},
       { path: 'create-post', loadChildren: () => import('./components/post/create-post/create-post.module').then(m => m.CreatePostModule)},
       { path: 'post-list', loadChildren: () => import('./components/post/post-list/post-list.module').then(m => m.PostListModule)},
+      { path: 'add-category',  loadChildren: () => import('./components/post/add-category/add-category.module').then(m => m.AddCategoryModule)
+      },
     ]
   },
 
@@ -37,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
 
 
 
