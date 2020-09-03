@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-// import { ThrowStmt } from '@angular/compiler';
+
 declare const uploadImage: any;
 
 
