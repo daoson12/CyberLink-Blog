@@ -16,19 +16,18 @@ export class CreatePostComponent implements OnInit {
 
   postFormGroup: FormGroup;
   categoryList: any = [];
-  createPostList:any;
+  createPostList: any;
   // selectedFile: File;
+  public postImage: any = File;
   constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
 
   ngOnInit() {
     this.postFormGroup = this.formBuider.group({
       id: [],
-      dateCreated: [],
       description: ['', [Validators.required]],
-      excerpt:['', [Validators.required]],
+      excerpt: ['', [Validators.required]],
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
-      image: [''],
       categoryId: ['', Validators.required]
 
     })
@@ -45,8 +44,11 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  onSelectedFile(e){
-    console.log(e.target.value)
+  onSelectedFile(e) {
+
+    const file = e.target.files[0];
+    console.log(file)
+    this.postImage = file;
 
     // if(e.target.files.length>0){
     //   const file=(e.target as HTMLInputElement).files[0];
@@ -62,18 +64,18 @@ export class CreatePostComponent implements OnInit {
   //   return this.postFormGroup.get('slug');
   // }
 
-// save post and deplay it to the post list
-  savePost():any {
- 
+  // save post and deplay it to the post list
+  savePost(postFormGroup: FormGroup): any {
+    const post = postFormGroup.value;
+    const formData = new FormData();
+    formData.append('postDto', JSON.stringify(post));
+    formData.append('image', this.postImage);
 
-  
-    var createpost= this.postFormGroup.value
-    console.log(createpost)
-     this.service.savePostInformation(createpost).subscribe(response => {
-       console.log(response);
-       this.postFormGroup.reset();
-      //  this.router.navigate(["home/post-list"]);
-     });
-   }
+    this.service.savePostInformation(formData).subscribe(response => {
+      console.log(response);
+      this.postFormGroup.reset();
+      this.router.navigate(["home/post-list"]);
+    });
+  }
 
 }
