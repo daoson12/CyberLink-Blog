@@ -12,6 +12,9 @@
     left: 100%;
     z-index: 3;
 }
+.post-title{
+    color: blue;
+}
 
 .btn-breadcrumb .btn:not(:last-child):before {
     content: " ";
