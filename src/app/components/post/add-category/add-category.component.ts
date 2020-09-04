@@ -59,4 +59,5 @@ deleteCategory(id:any){
 updateCategory(data: any){
   this.categoryFormGroup.patchValue(data);
 }
+
 }

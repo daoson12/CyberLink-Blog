@@ -12,7 +12,7 @@
                 <span class="pull-right">
                
     
-        <a   routerLink="create-post"   class="btn btn-sm btn-primary">
+        <a  (click)="gotocreatepost()"   class="btn btn-sm btn-primary">
             <span class="fa fa-plus-circle"></span> Create post</a>
                 </span>
             </h1>
@@ -90,7 +90,7 @@
                     <a class="btn ">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
                     <span>  <a class="btn ">Approve <i class="fa fa-check-circle-o "></i></a></span>
                     <span><a class="btn" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a></span>
-                    <span>  <a href="# " class="btn " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a></span>
+                    <span>  <a  class="btn " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a></span>
                 </div>
                 <div class="card-footer text-muted ">
                     {{list.dateCreated|date}} <span>by</span>
