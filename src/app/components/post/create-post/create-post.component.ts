@@ -28,7 +28,8 @@ export class CreatePostComponent implements OnInit {
       excerpt: ['', [Validators.required]],
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
-      categoryId: ['', Validators.required]
+      categoryId: ['', Validators.required],
+      imageUrl:['']
 
     })
     uploadImage();
@@ -49,21 +50,7 @@ export class CreatePostComponent implements OnInit {
     const file = e.target.files[0];
     console.log(file)
     this.postImage = file;
-
-    // if(e.target.files.length>0){
-    //   const file=(e.target as HTMLInputElement).files[0];
-    //   this.postFormGroup.get("image").setValue(file);
-    // }
-
   }
-
-  // get title(){
-  //   return this.postFormGroup.get('title');
-  // }
-  // get slug(){
-  //   return this.postFormGroup.get('slug');
-  // }
-
   // save post and deplay it to the post list
   savePost(postFormGroup: FormGroup): any {
     const post = postFormGroup.value;
