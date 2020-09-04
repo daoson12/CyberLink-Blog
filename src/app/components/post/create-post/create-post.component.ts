@@ -28,7 +28,8 @@ export class CreatePostComponent implements OnInit {
       excerpt: ['', [Validators.required]],
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
-      categoryId: ['', Validators.required]
+      categoryId: ['', Validators.required],
+      imageUrl:['']
 
     })
     uploadImage();
