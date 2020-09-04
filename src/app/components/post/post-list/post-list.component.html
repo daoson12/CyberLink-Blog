@@ -1,20 +1,24 @@
 <div class="container mt-2">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <div class="btn-group btn-breadcrumb">
-          <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
-          <a href="#" class="btn btn-default">Post</a>
-          <a href="#" class="btn btn-default">Post List</a>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <div class="btn-group btn-breadcrumb">
+                    <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
+                    <a href="#" class="btn btn-default">Post</a>
+                    <a href="#" class="btn btn-default">Post List</a>
 
+
+                </div>
+                <span class="pull-right">
+               
+    
+        <a   routerLink="create-post"   class="btn btn-sm btn-primary">
+            <span class="fa fa-plus-circle"></span> Create post</a>
+                </span>
+            </h1>
 
         </div>
-        <span class="pull-right">
-
-
-          <a routerLink="create-post" class="btn btn-sm btn-primary">
-            <span class="fa fa-plus-circle"></span> Create post</a>
-        </span>
+        
       </h1>
     </div>
   </div>
@@ -42,36 +46,22 @@
         </div>
       </div>
 
-      <!-- Categories Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Web Design</a>
-                </li>
-                <li>
-                  <a href="#">HTML</a>
-                </li>
-                <li>
-                  <a href="#">Freebies</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">CSS</a>
-                </li>
-                <li>
-                  <a href="#">Tutorials</a>
-                </li>
-              </ul>
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6" *ngFor="let list of categoryList ">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">{{list?.categoryName}}</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
           </div>
         </div>
