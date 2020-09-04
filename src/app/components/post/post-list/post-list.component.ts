@@ -15,9 +15,10 @@ export class PostListComponent implements OnInit {
   createPostList:any=[];
   postFormGroup: FormGroup;
   subscription: Subscription;
+  categoryList: any = [];
     constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getAllCreatePosts();
   
     this.postFormGroup = this.formBuider.group({
@@ -31,8 +32,16 @@ export class PostListComponent implements OnInit {
       categoryId: ['', Validators.required]
 
     })
-  }
 
+    this.getAllCategories();
+  }
+ // Get All Categories
+ getAllCategories() {
+  this.service.getAllCategories().subscribe(result => {
+    this.categoryList = result;
+    console.log(result)
+  });
+}
 
   gotocreatepost(){
     this.router.navigate(["home/create-post"]);
