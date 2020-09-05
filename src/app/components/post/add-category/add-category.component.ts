@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -15,7 +16,7 @@ export class AddCategoryComponent implements OnInit {
   categoryList: any = [];
   subscription: Subscription;
 
-  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
+  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -30,10 +31,16 @@ export class AddCategoryComponent implements OnInit {
   //save a category
   saveCategory(): any {
     this.service.addCategory(this.categoryFormGroup.value).subscribe(response => {
-      console.log(response)
+      // console.log(response)
+      this.toastr.success('Category Created!', 'Success!');
       this.categoryFormGroup.reset();
       this.getAllCategories()
-    })
+    }, 
+    error=>{
+      this.toastr.error(error.status + ':' + error.error.message, "Error!")
+    }
+    
+    )
   }
 
 
@@ -59,4 +66,5 @@ deleteCategory(id:any){
 updateCategory(data: any){
   this.categoryFormGroup.patchValue(data);
 }
+
 }

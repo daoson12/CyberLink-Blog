@@ -20,6 +20,20 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCreatePosts();
+
+  
+    this.postFormGroup = this.formBuider.group({
+      id: [],
+      dateCreated: [],
+      description: ['', [Validators.required]],
+      excerpt:['', [Validators.required]],
+      title: ['', [Validators.required]],
+      slug: ['', [Validators.required]],
+      image: [''],
+      categoryId: ['', Validators.required]
+
+    })
+
     this.getAllCategories();
   }
   // Get All Categories
@@ -43,6 +57,22 @@ export class PostListComponent implements OnInit {
   }
 
 
+  
+//delete a post
+deletePost(id:any){
+  this.service.deletePostById(id).subscribe(response=>{
+    this.getAllCreatePosts();
+    console.log(response)
+    
+  })
+}
+
+//update post
+updatePost(data:any){
+this.postFormGroup.patchValue(data);
+}
+
+
   //delete a post
   deletePost(id: any) {
     this.service.deletePostById(id).subscribe(response => {
@@ -55,5 +85,6 @@ export class PostListComponent implements OnInit {
   updatePost(data: any) {
     this.postFormGroup.patchValue(data);
   }
+
 
 }
