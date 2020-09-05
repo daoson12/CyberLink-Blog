@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 declare const uploadImage: any;
 
 
@@ -19,7 +19,7 @@ export class CreatePostComponent implements OnInit {
   createPostList: any;
   // selectedFile: File;
   public postImage: any = File;
-  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
+  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.postFormGroup = this.formBuider.group({
@@ -50,7 +50,11 @@ export class CreatePostComponent implements OnInit {
     const file = e.target.files[0];
     console.log(file)
     this.postImage = file;
+
   }
+
+
+
   // save post and deplay it to the post list
   savePost(postFormGroup: FormGroup): any {
     const post = postFormGroup.value;
@@ -60,8 +64,12 @@ export class CreatePostComponent implements OnInit {
 
     this.service.savePostInformation(formData).subscribe(response => {
       console.log(response);
+      this.toastr.success('Category Created!', 'Success!');
       this.postFormGroup.reset();
       this.router.navigate(["home/post-list"]);
+    },
+    error=>{
+      this.toastr.error(error.status + ':' + error.error.message, "Error!")
     });
   }
 
