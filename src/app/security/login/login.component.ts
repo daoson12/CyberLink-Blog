@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,12 +9,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   submitted = false;
+  myloginForm: FormGroup;
 
   constructor(private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.myloginForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+     
+    });
   }
   gotoSignup() {
+   
     this.router.navigate(["sign-up"]);
   }
 //   onSubmit(){
@@ -22,8 +30,18 @@ export class LoginComponent implements OnInit {
 
 //   this.router.navigate(['home']);
 // }
-onSubmit(){
+onSubmit(form:FormGroup){
+  console.log('email', form.value.email);
+  console.log('password', form.value.password);
   this.submitted = true;
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Login Successful',
+    showConfirmButton: true,
+    
+    // timer: 1500
+  })
   this.router.navigate(['home'])
 }
 
