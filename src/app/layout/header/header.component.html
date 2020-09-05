@@ -3,6 +3,11 @@
     <!-- <a class="navbar-brand">CYBERLINK</a> -->
     <button (click)="toggle()" class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i
         class="fa fa-bars fa-2x"></i></button>
+
+        <div class="ml-4" style="font-weight: bolder; ">Welcome back, <span 
+            style="color: rgb(10, 175, 153);">{{loggedInUser.surname | uppercase}}
+            {{loggedInUser.middleName}} {{loggedInUser.lastName}}</span>
+        </div>
     <!-- <div style="letter-spacing: 5px; font-weight: bolder;">CYBERLINK</div> -->
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
