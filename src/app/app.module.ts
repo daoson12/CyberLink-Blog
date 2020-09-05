@@ -18,7 +18,9 @@ import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.co
 import { HttpClientModule } from '@angular/common/http';
 
 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -56,6 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(), 
 
   ],
   providers: [],
