@@ -9,6 +9,7 @@ import { ContactUsComponent } from './components/sections/contact-us/contact-us.
 import { ForumComponent } from './components/sections/forum/forum.component';
 import{ViewPostComponent} from './components/view-post/view-post.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
+import { AuthGuard } from "./security/auth/auth.guard";
 
 
 
@@ -16,7 +17,7 @@ import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.co
 const routes: Routes = [ 
   { path: '', component: LandingPageComponent },
   {path: 'login', component: LoginComponent },
-  {path: 'sign-up', component: SignUpComponent},
+  {path: 'signup', component: SignUpComponent},
   {path:'about-us', component: AboutUsComponent},
   {path:'contact-us', component: ContactUsComponent},
   {path:'forum', component: ForumComponent},
@@ -27,11 +28,10 @@ const routes: Routes = [
     path:'home', component:HomeComponent,
     children: [
 
-      { path: '', loadChildren: () => import('./layout/dashboard/dashboard.module').then(m => m.DashboardModule)},
-      { path: 'create-post', loadChildren: () => import('./components/post/create-post/create-post.module').then(m => m.CreatePostModule)},
-      { path: 'post-list', loadChildren: () => import('./components/post/post-list/post-list.module').then(m => m.PostListModule)},
-      { path: 'add-category',  loadChildren: () => import('./components/post/add-category/add-category.module').then(m => m.AddCategoryModule)
-      },
+      { path: '', loadChildren: () => import('./layout/dashboard/dashboard.module').then(m => m.DashboardModule),canActivate: [AuthGuard]},
+      { path: 'create-post', loadChildren: () => import('./components/post/create-post/create-post.module').then(m => m.CreatePostModule),canActivate: [AuthGuard]},
+      { path: 'post-list', loadChildren: () => import('./components/post/post-list/post-list.module').then(m => m.PostListModule),canActivate: [AuthGuard]},
+      { path: 'add-category',  loadChildren: () => import('./components/post/add-category/add-category.module').then(m => m.AddCategoryModule),canActivate: [AuthGuard]},
     ]
   },
 

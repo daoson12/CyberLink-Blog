@@ -15,8 +15,11 @@ import { AboutUsComponent } from './components/sections/about-us/about-us.compon
 import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from "./security/auth/auth.interceptor";
+import { CustomValidationService } from "./security/custom-validators";
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
@@ -30,13 +33,13 @@ import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-  
+
     AppComponent,
     LandingPageComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-  
+
     SidebarComponent,
     LoginComponent,
     SignUpComponent,
@@ -45,24 +48,27 @@ import { ToastrModule } from 'ngx-toastr';
     ContactUsComponent,
     NavbarComponent,
     PageNotFoundComponent,
-   
 
- 
-    
+
+
+
   ],
   imports: [
- 
 
-  BrowserModule,
+
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot(), 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
+
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},CustomValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
