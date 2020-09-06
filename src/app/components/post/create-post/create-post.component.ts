@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 declare const uploadImage: any;
 
@@ -13,7 +14,9 @@ declare const uploadImage: any;
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  loggedInUser: any = JSON.parse(sessionStorage.getItem('loggedInUser'));
 
+  public Editor = ClassicEditor;
   postFormGroup: FormGroup;
   categoryList: any = [];
   createPostList: any;
@@ -29,7 +32,9 @@ export class CreatePostComponent implements OnInit {
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
       categoryId: ['', Validators.required],
-      imageUrl:['']
+      imageUrl: [''],
+      approved: [''],
+      createdBy: ['']
 
     })
     uploadImage();
@@ -53,6 +58,7 @@ export class CreatePostComponent implements OnInit {
   }
   // save post and deplay it to the post list
   savePost(postFormGroup: FormGroup): any {
+    this.postFormGroup.get('createdBy').setValue(this.loggedInUser)
     const post = postFormGroup.value;
     const formData = new FormData();
     formData.append('postDto', JSON.stringify(post));

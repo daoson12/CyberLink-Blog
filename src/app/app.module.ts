@@ -20,6 +20,9 @@ import { AuthInterceptor } from "./security/auth/auth.interceptor";
 import { CustomValidationService } from "./security/custom-validators";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewPostComponent } from './components/view-post/view-post.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+
 
 
 
@@ -37,7 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-
+    ViewPostComponent,
     SidebarComponent,
     LoginComponent,
     SignUpComponent,
@@ -46,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactUsComponent,
     NavbarComponent,
     PageNotFoundComponent,
+    ReversePipe,
 
 
 
@@ -65,7 +69,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},CustomValidationService],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, CustomValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

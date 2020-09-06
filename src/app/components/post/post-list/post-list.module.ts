@@ -9,10 +9,10 @@ import { PostListComponent } from './post-list.component';
   declarations: [PostListComponent],
   imports: [
 
-  CommonModule,
+    CommonModule,
     PostListRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
 export class PostListModule { }

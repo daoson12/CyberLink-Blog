@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea rows="5" class="form-control" name="description" formControlName="description"></textarea>
+          <ckeditor [editor]="Editor" data="" formControlName="description"></ckeditor>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary" (click)="savePost(postFormGroup)">Create Post</button>
@@ -68,7 +68,9 @@
 
       <div class="ml-2 col-sm-12">
         <img src="https://placehold.it/400x400" id="preview" class="img-thumbnail">
-      </div>
+
+       
+      </div> 
     </div>
 
 

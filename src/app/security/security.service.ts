@@ -6,10 +6,17 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 })
 export class SecurityService {
 
+
+
   securityUrl: string = '/cyberLink/v1/user/';
   oauthUrl: string = '/cyberLink/oauth/token';
 
   constructor(private http: HttpClient) { }
+
+
+  saveUser(data: any): any {
+    return this.http.post(this.securityUrl + '/createUser', data);
+  }
 
   login(loginData: any): any {
     const body = new HttpParams().set('username', loginData.username).set('password', loginData.password).set('grant_type', 'password');
@@ -20,6 +27,10 @@ export class SecurityService {
     return this.http.post(this.oauthUrl, body, { headers });
 
 
+  }
+
+  getAllUsers(): any {
+    return this.http.get(this.securityUrl + '/user');
   }
 
   authenticateAndGetUserRoles(value: any): any {

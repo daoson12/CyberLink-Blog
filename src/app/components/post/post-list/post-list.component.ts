@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
-
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-list',
@@ -16,7 +15,7 @@ export class PostListComponent implements OnInit {
   postFormGroup: FormGroup;
   subscription: Subscription;
   categoryList: any = [];
-  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
+  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getAllCreatePosts();
@@ -40,6 +39,23 @@ export class PostListComponent implements OnInit {
       this.createPostList = result;
       console.log(result)
     })
+  }
+
+  approvePost(list: any) {
+    list.approved = true
+    this.service.approvePost(list).subscribe(res => {
+      console.log(res);
+      this.toastr.success('', 'Your Post Was Approved Successfully')
+
+    },
+      error => {
+        this.toastr.error(error.message, 'Post Approval Failed!')
+      }
+    )
+  }
+
+  viewPost(id: number) {
+    this.router.navigate(['view-post', id]);
   }
 
 
