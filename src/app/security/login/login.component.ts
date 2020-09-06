@@ -85,6 +85,7 @@ authenticateAndGetUserRoles(value: any) {
 
       this.submitted = false;
       sessionStorage.setItem('loggedInUser', JSON.stringify(res.data));
+      console.log(res.data)
       this.toastr.success('Login Successful!');
       this.router.navigate(['home']);
 

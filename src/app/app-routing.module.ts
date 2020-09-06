@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'about-us', component: AboutUsComponent},
   {path:'contact-us', component: ContactUsComponent},
   {path:'forum', component: ForumComponent},
-  {path:'view-post', component:ViewPostComponent},
+  {path:'view-post/:id', component:ViewPostComponent},
   {path:'page-not-found', component:PageNotFoundComponent},
 
   {

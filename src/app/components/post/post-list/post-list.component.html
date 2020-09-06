@@ -54,7 +54,7 @@
                 </li>
               </ul>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -75,28 +75,37 @@
 
 
       <!-- Blog Post -->
-      <div class="card mb-4" *ngFor="let list of  createPostList">
+      <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() ">
 
-        <div class="card-body ">
-          <div class="row ">
+        <div class="ui segment ">
+          <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i
+              class="ui question circle icon ml-2"></i></a>
+          <a class="ui green ribbon label" *ngIf="list.approved==true">Approved <i
+              class="ui check circle icon ml-2"></i></a>
+          <div class="row">
+
             <div class="col-8 ">
-              <h2 class="card-title ">{{list.title}}</h2>
+              <h2 class="card-title ">{{list.title}} </h2>
+              <p></p>
               <p class="card-text ">{{list.excerpt}}</p>
-
             </div>
+
             <div class="col-3 ">
+
               <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="100%" width="100%"
                 alt="{{list?.imageName }}">
             </div>
           </div>
-          <a class="btn ">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
-          <span> <a class="btn ">Approve <i class="fa fa-check-circle-o "></i></a></span>
-          <span><a class="btn" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a></span>
-          <span> <a href="# " class="btn " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a></span>
+
+          <a class="ui label " (click)="viewPost(list.id)">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
+          <a class="ui green label " (click)="approvePost(list)">Approve <i class="fa fa-check-circle-o "></i></a>
+          <a class="ui  blue label" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a>
+          <a class="ui  red label " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a>
+
         </div>
-        <div class="card-footer text-muted ">
+        <div class="ui secondary segment ">
           {{list.dateCreated|date}} <span>by</span>
-          <a href="# ">Start Bootstrap</a>
+          <a class="ml-2" href="#">DAODU Victor Olaoluwa</a>
         </div>
       </div>
 

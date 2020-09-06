@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreatePostComponent } from './create-post.component';
 import { CreatePostRoutingModule } from './create-post-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   CommonModule,
     CreatePostRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class CreatePostModule { }
