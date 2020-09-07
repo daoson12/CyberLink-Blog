@@ -34,7 +34,7 @@
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
                     <div class="ui mini icon input">
-                        <input type="text" placeholder="Search post..." [(ngModel)]="filter">
+                        <input type="text" placeholder="Search post..." [(ngModel)]="searchfilter">
                         <i class="search icon"></i>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
 
 
             <!-- Blog Post -->
-            <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() | filter:filter | paginate: { itemsPerPage: 3, currentPage: p } ">
+            <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() | filter:searchfilter | paginate: { itemsPerPage: 3, currentPage: p } ">
 
                 <div class="ui segment ">
                     <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i

@@ -14,8 +14,8 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   submitted = false;
   loading: boolean = false;
-  registrationSuccess: boolean;
-  registrationFailure: boolean;
+  // registrationSuccess: boolean;
+  // registrationFailure: boolean;
   constructor(private router: Router, private fb: FormBuilder, private validatorService: CustomValidationService, private toastr: ToastrService, private service: SecurityService) { }
 
   ngOnInit() {
@@ -70,16 +70,16 @@ export class SignUpComponent implements OnInit {
     this.service.saveUser(this.signupForm.value).subscribe(res => {
       if (res.response == 'Success') {
         this.submitted = false;
-        this.registrationSuccess = true;
-        this.registrationFailure = false;
+        // this.registrationSuccess = true;
+        // this.registrationFailure = false;
         this.signupForm.reset();
         this.toastr.success('User Signup was Successful', res.success);
         this.gotologin();
 
       }
       else {
-        this.registrationSuccess = false;
-        this.registrationFailure = true;
+        // this.registrationSuccess = false;
+        // this.registrationFailure = true;
       }
 
     },
