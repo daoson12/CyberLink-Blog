@@ -12,6 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
+  submitted = false;
+  loading: boolean = false;
+  registrationSuccess: boolean;
+  registrationFailure: boolean;
   constructor(private router: Router, private fb: FormBuilder, private validatorService: CustomValidationService, private toastr: ToastrService, private service: SecurityService) { }
 
   ngOnInit() {
@@ -43,6 +47,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
 
     // stop here if form is invalids
     if (this.signupForm.invalid) {
@@ -54,6 +59,7 @@ export class SignUpComponent implements OnInit {
           invalid.push(name);
         }
       }
+      this.submitted = true;
       this.toastr.error('The Following fields are Invalid: ' + invalid, 'Invalid Fields');
       return;
 
@@ -63,13 +69,22 @@ export class SignUpComponent implements OnInit {
 
     this.service.saveUser(this.signupForm.value).subscribe(res => {
       if (res.response == 'Success') {
+        this.submitted = false;
+        this.registrationSuccess = true;
+        this.registrationFailure = false;
         this.signupForm.reset();
         this.toastr.success('User Signup was Successful', res.success);
+        this.gotologin();
 
+      }
+      else {
+        this.registrationSuccess = false;
+        this.registrationFailure = true;
       }
 
     },
       error => {
+        this.submitted = false;
         this.toastr.error('User Signup Failed', 'Failure');
 
       }

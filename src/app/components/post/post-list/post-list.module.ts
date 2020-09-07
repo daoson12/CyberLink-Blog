@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostListRoutingModule } from './post-list-routing.module';
 import { PostListComponent } from './post-list.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [PostListComponent],
@@ -13,6 +13,7 @@ import { PostListComponent } from './post-list.component';
     PostListRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
 })
 export class PostListModule { }

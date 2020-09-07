@@ -70,7 +70,7 @@
       <!-- Author -->
       <p class="lead">
         by
-        <a href="#">Start Bootstrap</a>
+        <a href="#">{{post?.createdBy?.surname |uppercase}} {{post?.createdBy?.lastName | uppercase}}</a>
       </p>
       <hr>
 
@@ -89,7 +89,11 @@
       <div class="lead" [innerHTML]="post?.description"></div>
 
       <hr>
-
+      <div>
+        share:
+        <app-share></app-share>
+      </div>
+      <hr>
       <!-- Comments Form -->
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>

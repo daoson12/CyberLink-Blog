@@ -22,7 +22,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewPostComponent } from './components/view-post/view-post.component';
 import { ReversePipe } from './pipes/reverse.pipe';
-
+// import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareComponent } from './components/share/share/share.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 
 
@@ -50,6 +53,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
     NavbarComponent,
     PageNotFoundComponent,
     ReversePipe,
+    ShareComponent,
 
 
 
@@ -60,10 +64,13 @@ import { ReversePipe } from './pipes/reverse.pipe';
 
     BrowserModule,
     AppRoutingModule,
+    FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    // JwSocialButtonsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    // ShareButtonsModule,
     ToastrModule.forRoot()
 
 

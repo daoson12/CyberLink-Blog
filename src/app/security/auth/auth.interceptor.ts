@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private router: Router) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
     let authReq = request;
     const token = sessionStorage.getItem("token");
     if (token != null) {
@@ -26,12 +26,12 @@ export class AuthInterceptor implements HttpInterceptor {
         headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)
       });
     }
-    return next.handle(authReq).pipe(tap(event=> {
-      if (event instanceof HttpResponse){
+    return next.handle(authReq).pipe(tap(event => {
+      if (event instanceof HttpResponse) {
 
       }
-    },error=>{
-      if(error.status===401){
+    }, error => {
+      if (error.status === 401) {
         this.router.navigate(['/'])
       }
     }

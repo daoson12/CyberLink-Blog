@@ -4,6 +4,7 @@ import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ToastrService } from 'ngx-toastr';
 
 declare const uploadImage: any;
 
@@ -22,7 +23,7 @@ export class CreatePostComponent implements OnInit {
   createPostList: any;
   // selectedFile: File;
   public postImage: any = File;
-  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
+  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.postFormGroup = this.formBuider.group({
@@ -67,6 +68,7 @@ export class CreatePostComponent implements OnInit {
     this.service.savePostInformation(formData).subscribe(response => {
       console.log(response);
       this.postFormGroup.reset();
+      this.toastr.success('Post was Added Successfully!!!')
       this.router.navigate(["home/post-list"]);
     });
   }
