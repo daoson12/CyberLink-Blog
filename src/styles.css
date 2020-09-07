@@ -245,7 +245,7 @@ button:focus {
     outline: 5px auto -webkit-focus-ring-color;
 }
 
-input,
+/* input,
 button,
 select,
 optgroup,
@@ -254,12 +254,12 @@ textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-}
+} */
 
-button,
+/* button,
 input {
     overflow: visible;
-}
+} */
 
 button,
 select {

@@ -33,11 +33,9 @@
       <div class="card my-4">
         <h5 class="card-header">Search</h5>
         <div class="card-body">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-append">
-              <button class="btn btn-secondary" type="button">Go!</button>
-            </span>
+          <div class="ui mini icon input">
+            <input type="text" placeholder="Search post..."  [(ngModel)]="filter">
+            <i class="search icon"></i>
           </div>
         </div>
       </div>
@@ -75,7 +73,7 @@
 
 
       <!-- Blog Post -->
-      <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() ">
+      <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() | filter:filter | paginate: { itemsPerPage: 3, currentPage: p } ">
 
         <div class="ui segment ">
           <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i
@@ -109,15 +107,17 @@
         </div>
       </div>
 
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
       <!-- Pagination -->
-      <ul class="pagination justify-content-center mb-4 ">
+      <!-- <ul class="pagination justify-content-center mb-4 ">
         <li class="page-item ">
           <a class="page-link " href="# ">&larr; Older</a>
         </li>
         <li class="page-item disabled ">
           <a class="page-link " href="# ">Newer &rarr;</a>
         </li>
-      </ul>
+      </ul> -->
 
     </div>
 
