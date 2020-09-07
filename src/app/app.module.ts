@@ -15,12 +15,19 @@ import { AboutUsComponent } from './components/sections/about-us/about-us.compon
 import { ContactUsComponent } from './components/sections/contact-us/contact-us.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
-
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from "./security/auth/auth.interceptor";
+import { CustomValidationService } from "./security/custom-validators";
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewPostComponent } from './components/view-post/view-post.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+// import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareComponent } from './components/share/share/share.component';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+
+
 
 
 
@@ -30,13 +37,13 @@ import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-  
+
     AppComponent,
     LandingPageComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-  
+    ViewPostComponent,
     SidebarComponent,
     LoginComponent,
     SignUpComponent,
@@ -45,24 +52,31 @@ import { ToastrModule } from 'ngx-toastr';
     ContactUsComponent,
     NavbarComponent,
     PageNotFoundComponent,
-   
+    ReversePipe,
+    ShareComponent,
 
- 
-    
+
+
+
   ],
   imports: [
- 
 
-  BrowserModule,
+
+    BrowserModule,
     AppRoutingModule,
+    // FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    // JwSocialButtonsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot(), 
+    BrowserAnimationsModule,
+    // ShareButtonsModule,
+    ToastrModule.forRoot()
+
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, CustomValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

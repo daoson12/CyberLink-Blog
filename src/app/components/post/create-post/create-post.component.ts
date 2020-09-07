@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from './../post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 declare const uploadImage: any;
 
 
@@ -13,13 +14,15 @@ declare const uploadImage: any;
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  loggedInUser: any = JSON.parse(sessionStorage.getItem('loggedInUser'));
 
+  public Editor = ClassicEditor;
   postFormGroup: FormGroup;
   categoryList: any = [];
   createPostList: any;
   // selectedFile: File;
   public postImage: any = File;
-  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
+  constructor(private formBuider: FormBuilder, private router: Router, private service: PostService) { }
 
   ngOnInit() {
     this.postFormGroup = this.formBuider.group({
@@ -29,7 +32,9 @@ export class CreatePostComponent implements OnInit {
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
       categoryId: ['', Validators.required],
-      imageUrl:['']
+      imageUrl: [''],
+      approved: [''],
+      createdBy: ['']
 
     })
     uploadImage();
@@ -50,13 +55,10 @@ export class CreatePostComponent implements OnInit {
     const file = e.target.files[0];
     console.log(file)
     this.postImage = file;
-
   }
-
-
-
   // save post and deplay it to the post list
   savePost(postFormGroup: FormGroup): any {
+    this.postFormGroup.get('createdBy').setValue(this.loggedInUser)
     const post = postFormGroup.value;
     const formData = new FormData();
     formData.append('postDto', JSON.stringify(post));
@@ -64,12 +66,8 @@ export class CreatePostComponent implements OnInit {
 
     this.service.savePostInformation(formData).subscribe(response => {
       console.log(response);
-      this.toastr.success('Category Created!', 'Success!');
       this.postFormGroup.reset();
       this.router.navigate(["home/post-list"]);
-    },
-    error=>{
-      this.toastr.error(error.status + ':' + error.error.message, "Error!")
     });
   }
 

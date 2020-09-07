@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { PostService } from '../../components/post/post.service';
+
+
+
 
 @Component({
   selector: 'app-landing-page',
@@ -7,12 +13,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  createPostList: any = [];
+  postFormGroup: FormGroup;
+  subscription: Subscription;
+  categoryList: any = [];
+  approved=true
+  constructor(private router: Router, private service: PostService,) { }
 
-  constructor(private router: Router) { }
+  ngOnInit() {
+  
+    this.getAllCreatePosts();
+    this.getAllCategories();
 
-  ngOnInit(): void {
+  }
 
 
+  // Get All Categories
+  getAllCategories() {
+    this.service.getAllCategories().subscribe(result => {
+      this.categoryList = result;
+      console.log(result)
+    });
+  }
+
+  //get All Created Post
+  getAllCreatePosts() {
+    this.service.getAllPosts().subscribe(result => {
+      this.createPostList = result;
+      console.log(result)
+    })
+  }
+
+  
+  viewPost(id: number) {
+    this.router.navigate(['view-post', id]);
   }
 
   loginButtonClicked() {

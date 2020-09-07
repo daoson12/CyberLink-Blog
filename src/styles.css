@@ -1,4 +1,5 @@
-@import '~ngx-toastr/toastr';
+/* @import url('') */
+@import url('../node_modules/font-awesome/css/font-awesome.min.css');
 :root {
     --blue: #007bff;
     --indigo: #6610f2;

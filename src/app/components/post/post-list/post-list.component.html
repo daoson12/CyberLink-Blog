@@ -10,9 +10,9 @@
 
                 </div>
                 <span class="pull-right">
-               
-    
-        <a  (click)="gotocreatepost()"   class="btn btn-sm btn-primary">
+
+
+          <a routerLink="create-post" class="btn btn-sm btn-primary">
             <span class="fa fa-plus-circle"></span> Create post</a>
                 </span>
             </h1>
@@ -36,8 +36,8 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
                         <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
+              <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
                     </div>
                 </div>
             </div>
@@ -47,12 +47,11 @@
                 <h5 class="card-header">Categories</h5>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-6" *ngFor="let list of categoryList ">
+                        <div class="col-lg-6" *ngFor="let list of categoryList">
                             <ul class="list-unstyled mb-0">
                                 <li>
                                     <a href="#">{{list?.categoryName}}</a>
                                 </li>
-
                             </ul>
                         </div>
 
@@ -73,28 +72,38 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8 mt-4">
 
+
             <!-- Blog Post -->
-            <div class="card mb-4" *ngFor="let list of  createPostList">
+            <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() ">
 
-                <div class="card-body ">
-                    <div class="row ">
+                <div class="ui segment ">
+                    <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i
+              class="ui question circle icon ml-2"></i></a>
+                    <a class="ui green ribbon label" *ngIf="list.approved==true">Approved <i
+              class="ui check circle icon ml-2"></i></a>
+                    <div class="row">
+
                         <div class="col-8 ">
-                            <h2 class="card-title ">{{list.title}}</h2>
+                            <h2 class="card-title ">{{list.title}} </h2>
+                            <p></p>
                             <p class="card-text ">{{list.excerpt}}</p>
-
                         </div>
+
                         <div class="col-3 ">
-                            <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="100%" width="100%" alt="Card image cap ">
+
+                            <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="100%" width="100%" alt="{{list?.imageName }}">
                         </div>
                     </div>
-                    <a class="btn ">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
-                    <span>  <a class="btn ">Approve <i class="fa fa-check-circle-o "></i></a></span>
-                    <span><a class="btn" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a></span>
-                    <span>  <a  class="btn " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a></span>
+
+                    <a class="ui label " (click)="viewPost(list.id)">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
+                    <a class="ui green label " (click)="approvePost(list)">Approve <i class="fa fa-check-circle-o "></i></a>
+                    <a class="ui  blue label" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a>
+                    <a class="ui  red label " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a>
+
                 </div>
-                <div class="card-footer text-muted ">
+                <div class="ui secondary segment ">
                     {{list.dateCreated|date}} <span>by</span>
-                    <a href="# ">Start Bootstrap</a>
+                    <a class="ml-2" href="#">{{list?.createdBy?.surname |uppercase}} {{list?.createdBy?.lastName | uppercase}}</a>
                 </div>
             </div>
 

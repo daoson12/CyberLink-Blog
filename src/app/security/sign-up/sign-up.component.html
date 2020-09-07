@@ -1,84 +1,92 @@
 <div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
-                <br><br><br><br><br>
-                <img src="assets/img//img-01.png" alt="IMG">
-            </div>
-
-            <form class="login100-form validate-form">
-                <span class="login100-form-title" style="
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+        <br><br><br><br><br>
+        <img src="assets/img//img-01.png" alt="IMG">
+      </div>
+      <form class="login100-form validate-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <span class="login100-form-title" style="
                 color: white;
 text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
              ">
-                    Create New Account
-                </span>
+          Create New Account
+        </span>
 
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="firstname" placeholder="First Name">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="surname" placeholder="Surname">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="surname" placeholder="UserName">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="email" name="email" placeholder="Email">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Confirm Password">
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </span>
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
-                        Create New Account <span> <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></span>
-                    </button>
-                </div>
-
-                <div class="text-center p-t-12">
-                    <span class="txt1">
-                        Alraedy Have an Account?
-                    </span>
-
-                </div>
-
-                <div class="text-center p-t-136">
-                    <a class="txt2" (click)="gotologin()">
-                        Login
-                        <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </form>
+        <div class="wrap-input100">
+          <input class="input100" type="text" placeholder="First Name" formControlName="lastName">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
         </div>
+
+        <div class="wrap-input100">
+          <input class="input100" type="text" placeholder="Surname" formControlName="surname">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="wrap-input100">
+          <input class="input100" type="text" placeholder="Username" formControlName="username">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100">
+          <input class="input100" type="email" placeholder="Email" formControlName="email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="wrap-input100">
+          <input class="input100" type="password" placeholder="Password" formControlName="password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="wrap-input100">
+          <input class="input100" type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <span class="text-danger" *ngIf="(f.confirmPassword.touched) && f.confirmPassword.errors?.required">
+          <div class="field">
+            Confirm Password is required
+          </div>
+        </span>
+
+        <!-- <div class="container-login100-form-btn">
+          <button class="login100-form-btn" (click)="onSubmit()">
+            Create New Account <span> <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></span>
+          </button>
+        </div> -->
+        <div (click)="onSubmit()"
+        [className]="submitted ? 'ui fluid large primary loading submit button' : 'ui fluid large primary submit button'">
+        Create Account</div>
+   
+      <div class="text-center p-t-12">
+        <span class="txt1">
+          Already Have an Account?
+        </span>
+
+      </div>
+
+      <div class="text-center p-t-136">
+        <a class="txt2">
+          Login
+          <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+        </a>
+      </div>
+    </form>
     </div>
+  </div>
 </div>
