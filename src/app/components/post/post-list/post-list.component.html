@@ -1,23 +1,23 @@
 <div class="container mt-2">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <div class="btn-group btn-breadcrumb">
-          <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
-          <a href="#" class="btn btn-default">Post</a>
-          <a href="#" class="btn btn-default">Post List</a>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <div class="btn-group btn-breadcrumb">
+                    <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
+                    <a href="#" class="btn btn-default">Post</a>
+                    <a href="#" class="btn btn-default">Post List</a>
 
 
-        </div>
-        <span class="pull-right">
+                </div>
+                <span class="pull-right">
 
 
           <a routerLink="create-post" class="btn btn-sm btn-primary">
             <span class="fa fa-plus-circle"></span> Create post</a>
-        </span>
-      </h1>
+                </span>
+            </h1>
+        </div>
     </div>
-  </div>
 </div>
 
 
@@ -25,106 +25,104 @@
 <!-- Page Content -->
 <div class="container mt-4 shadow">
 
-  <div class="row">
-    <!-- Sidebar Widgets Column -->
-    <div class="col-md-4">
+    <div class="row">
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
 
-      <!-- Search Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Search</h5>
-        <div class="card-body">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-append">
-              <button class="btn btn-secondary" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categories Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6" *ngFor="let list of categoryList">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">{{list?.categoryName}}</a>
-                </li>
-              </ul>
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="ui mini icon input">
+                        <input type="text" placeholder="Search post..." [(ngModel)]="searchfilter">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
             </div>
 
-          </div>
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6" *ngFor="let list of categoryList">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#">{{list?.categoryName}}</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                </div>
+            </div>
+
         </div>
-      </div>
 
-      <!-- Side Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Side Widget</h5>
-        <div class="card-body">
-          You can put anything you want inside of these side widgets. They are easy to use, and feature the new
-          Bootstrap 4 card containers!
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Blog Entries Column -->
-    <div class="col-md-8 mt-4">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-4">
 
 
-      <!-- Blog Post -->
-      <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() ">
+            <!-- Blog Post -->
+            <div class="ui segments mb-4" *ngFor="let list of  createPostList.slice().reverse() | filter:searchfilter | paginate: { itemsPerPage: 3, currentPage: p } ">
 
-        <div class="ui segment ">
-          <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i
+                <div class="ui segment ">
+                    <a class="ui red ribbon label" *ngIf="list.approved == false">Pending <i
               class="ui question circle icon ml-2"></i></a>
-          <a class="ui green ribbon label" *ngIf="list.approved==true">Approved <i
+                    <a class="ui green ribbon label" *ngIf="list.approved==true">Approved <i
               class="ui check circle icon ml-2"></i></a>
-          <div class="row">
+                    <div class="row">
 
-            <div class="col-8 ">
-              <h2 class="card-title ">{{list.title}} </h2>
-              <p></p>
-              <p class="card-text ">{{list.excerpt}}</p>
+                        <div class="col-8 ">
+                            <h2 class="card-title ">{{list.title}} </h2>
+                            <p></p>
+                            <p class="card-text ">{{list.excerpt}}</p>
+                        </div>
+
+                        <div class="col-3 ">
+
+                            <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="100%" width="100%" alt="{{list?.imageName }}">
+                        </div>
+                    </div>
+
+                    <a class="ui label " (click)="viewPost(list.id)">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
+                    <a class="ui green label " (click)="approvePost(list)">Approve <i class="fa fa-check-circle-o "></i></a>
+                    <a class="ui  blue label" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a>
+                    <a class="ui  red label " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a>
+
+                </div>
+                <div class="ui secondary segment ">
+                    {{list.dateCreated|date}} <span>by</span>
+                    <a class="ml-2" href="#">{{list?.createdBy?.surname |uppercase}} {{list?.createdBy?.lastName | uppercase}}</a>
+                </div>
             </div>
 
-            <div class="col-3 ">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
-              <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="100%" width="100%"
-                alt="{{list?.imageName }}">
-            </div>
-          </div>
-
-          <a class="ui label " (click)="viewPost(list.id)">Preview <i class="fa fa-arrow-circle-o-up "></i></a>
-          <a class="ui green label " (click)="approvePost(list)">Approve <i class="fa fa-check-circle-o "></i></a>
-          <a class="ui  blue label" (click)="updatePost(list)">Edit <i class="fa fa-edit "></i></a>
-          <a class="ui  red label " (click)="deletePost(list.id)">Delete <i class="fa fa-trash "></i></a>
-
-        </div>
-        <div class="ui secondary segment ">
-          {{list.dateCreated|date}} <span>by</span>
-          <a class="ml-2" href="#">{{list?.createdBy?.surname |uppercase}} {{list?.createdBy?.lastName | uppercase}}</a>
-        </div>
-      </div>
-
-      <!-- Pagination -->
-      <ul class="pagination justify-content-center mb-4 ">
+            <!-- Pagination -->
+            <!-- <ul class="pagination justify-content-center mb-4 ">
         <li class="page-item ">
           <a class="page-link " href="# ">&larr; Older</a>
         </li>
         <li class="page-item disabled ">
           <a class="page-link " href="# ">Newer &rarr;</a>
         </li>
-      </ul>
+      </ul> -->
+
+        </div>
+
+
 
     </div>
-
-
-
-  </div>
-  <!-- /.row -->
+    <!-- /.row -->
 
 </div>
 <!-- /.container -->

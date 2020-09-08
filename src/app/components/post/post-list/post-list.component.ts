@@ -15,9 +15,13 @@ export class PostListComponent implements OnInit {
   postFormGroup: FormGroup;
   subscription: Subscription;
   categoryList: any = [];
+  p: number = 1;
+  searchfilter:any;
   constructor(private formBuider: FormBuilder, private router: Router, private service: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
+      //initializing p to one
+
     this.getAllCreatePosts();
     this.getAllCategories();
   }

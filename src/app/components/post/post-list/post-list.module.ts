@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostListRoutingModule } from './post-list-routing.module';
 import { PostListComponent } from './post-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [PostListComponent],
@@ -13,7 +14,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PostListRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
 })
 export class PostListModule { }

@@ -25,6 +25,9 @@ import { ReversePipe } from './pipes/reverse.pipe';
 // import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareComponent } from './components/share/share/share.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { ManageRoleComponent } from './components/settings/manage-role/manage-role.component';
+// import { AssignRoleComponent } from './components/settings/assign-role/assign-role.component';
+// import { UserRoleComponent } from './components/settings/user-role/user-role.component';
 // import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 
@@ -54,6 +57,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PageNotFoundComponent,
     ReversePipe,
     ShareComponent,
+    // ManageRoleComponent,
+    // AssignRoleComponent,
+    // UserRoleComponent,
 
 
 
