@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
   reactiveForm() {
     sessionStorage.clear();
     this.signupForm = this.fb.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(6)]],
       surname: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required], [Validators.email]],

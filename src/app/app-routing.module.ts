@@ -32,6 +32,9 @@ const routes: Routes = [
       { path: 'create-post', loadChildren: () => import('./components/post/create-post/create-post.module').then(m => m.CreatePostModule),canActivate: [AuthGuard]},
       { path: 'post-list', loadChildren: () => import('./components/post/post-list/post-list.module').then(m => m.PostListModule),canActivate: [AuthGuard]},
       { path: 'add-category',  loadChildren: () => import('./components/post/add-category/add-category.module').then(m => m.AddCategoryModule),canActivate: [AuthGuard]},
+      { path: 'assign-role', loadChildren: () => import('./components/settings/assign-role/assign-role.module').then(m => m.AssignRoleModule)},
+      { path: 'manage-role', loadChildren: () => import('./components/settings/manage-role/manage-role.module').then(m => m.ManageRoleModule)},
+      { path: 'user-role',  loadChildren: () => import('./components/settings/user-role/user-role.module').then(m => m.UserRoleModule)},
     ]
   },
 
