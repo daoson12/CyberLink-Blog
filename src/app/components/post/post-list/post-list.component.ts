@@ -35,7 +35,6 @@ export class PostListComponent implements OnInit {
 
   gotocreatepost() {
     this.router.navigate(["home/create-post"]);
-
   }
   //get All Created Post
   getAllCreatePosts() {

@@ -35,16 +35,13 @@
                 <!-- <div class="container-login100-form-btn"><button class="login100-form-btn"><a (click)="onSubmit()"> Login</a>
           </button>
                 </div> -->
-                <div (click)="onSubmit() " [className]="submitted ? 'ui fluid large primary loading submit button' : 'ui fluid large primary submit button' ">
-                    Create Account</div>
+                <div class="container-login100-form-btn"><button class="login100-form-btn" (click)="onSubmit() " [className]="submitted ? 'ui fluid large primary loading submit button' : 'ui fluid large primary submit button' ">Login</button></div>
 
 
                 <div class="text-center p-t-12">
 
                     <a class="txt2 " data-toggle="modal" data-target="#modelId">
-                        <span class="txt1">
-            Forgot
-          </span> Password?
+                        <span class="txt1">Forgot</span> Password?
                     </a>
                     <div class="modal fade shadow" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
