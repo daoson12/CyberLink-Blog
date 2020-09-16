@@ -13,11 +13,14 @@ import { PostService } from '../../components/post/post.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  loggedInUser: any = JSON.parse(sessionStorage.getItem('loggedInUser'));
+  p: number = 1;
   createPostList: any = [];
   postFormGroup: FormGroup;
   subscription: Subscription;
   categoryList: any = [];
   approved=true
+  searchfilter:any;
   constructor(private router: Router, private service: PostService,) { }
 
   ngOnInit() {

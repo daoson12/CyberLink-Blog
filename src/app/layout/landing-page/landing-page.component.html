@@ -12,8 +12,7 @@
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <ul class="nav navbar-nav">
-                <li class="nav-item active"><a href="#hero" class="nav-link" style="
-                    color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> Home</a></li>
+                <li class="nav-item active"><a routerLink="/" class="nav-link" style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;"> Home</a></li>
 
                 <li class="nav-item"> <a class="nav-link js-scroll-trigger" routerLink="about-us" style="color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; ">About Us</a>
                 </li>
@@ -173,193 +172,6 @@
 
 
     <section>
-
-        <div class="container my-4" style="background-color: white;">
-            <br><br>
-            <header class="lastestBlog text-center">
-                <h2 style="  color: white;text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">Latest from the blog
-                </h2>
-                <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </header>
-            <hr class="my-4">
-            <!--Carousel Wrapper-->
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-4" *ngFor="let list of createPostList.slice().reverse() ">
-                                <div class="card mb-2" *ngIf="list.approved" style="min-height: 200px; max-height: fit-content;">
-                                    <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="80%" width="80%" alt="{{list?.imageName }}">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{list?.title}}</h4>
-                                        <hr>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date">{{list?.dateCreated|date}}</div>
-                                            <div class="category">
-                                                <a href="#">{{list?.categoryId?.categoryName}}</a></div>
-                                        </div>
-                                        <p class="card-text">{{list?.excerpt}}</p>
-                                        <a (click)="viewPost(list.id)" class="btn btn-primary"> Read More...</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!--/.First slide-->
-
-                    <!--Second slide-->
-                    <!-- <div class="carousel-item">
-
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-          </div> -->
-                    <!--/.Second slide-->
-
-                    <!--Third slide-->
-                    <!-- <div class="carousel-item">
-
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top"
-                    src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
-                    </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Read More...</a>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div> -->
-                    <!--/.Third slide-->
-
-
-                </div>
-                <!--/.Slides-->
-
-                <!--Indicators-->
-                <!-- <ol class="carousel-indicators">
-                    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                    <li data-target="#multi-item-example" data-slide-to="1"></li>
-                    <li data-target="#multi-item-example" data-slide-to="2"></li>
-                </ol> -->
-                <!--/.Indicators-->
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-                </div>
-                <!--/.Controls-->
-            </div>
-            <!--/.Carousel Wrapper-->
-
-
-        </div>
-
         <div class="container mt-4" style="background-color: white;">
             <br><br>
             <header class="lastestBlog text-center ">
@@ -376,119 +188,39 @@ text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
                     <div class="container-fluid">
                         <div class="row">
                             <!-- post -->
-                            <div class="post col-xl-6">
-                                <div class="post-thumbnail shadow" id="cf6_image">
-                                    <a href="post.html"><img src="assets/img/blog-post-1.jpeg" alt="..." class="img-fluid"></a>
+                            <div class="post col-xl-6" *ngFor="let list of createPostList.slice().reverse()|filter:searchfilter|paginate:{itemsPerPage: 4, currentPage: p } ">
+                                <div class="post-thumbnail shadow" id="cf6_image" *ngIf="list.approved" style="min-height: 200px; max-height: fit-content;">
+                                    <img class="card-img-top img-thumbnail " [src]="list?.imageUrl" height="80%" width="80%" alt="{{list?.imageName }}">
 
                                 </div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
+                                        <div class="date meta-last">{{list?.dateCreated|date}}</div>
+                                        <div class="category"><a href="#">{{list?.categoryId?.categoryName}}</a></div>
                                     </div>
                                     <a href="post.html">
-                                        <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
+                                        <h3 class="h4">{{list?.title}}</h3>
                                     </a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                    <p class="text-muted">{{list?.excerpt}}</p>
+                                    <a (click)="viewPost(list.id)" class="btn btn-primary"> Read More...</a>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="assets/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div>
+                                            <!-- Author -->
+                                            <p class="lead">
+                                                by
+                                                <a href="#">{{post?.createdBy?.surname |uppercase}} {{post?.createdBy?.lastName | uppercase}}</a>
+                                            </p>
                                         </a>
                                         <div class="date"><i class="icon-clock"></i> 2 months ago</div>
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                     </footer>
                                 </div>
                             </div>
-                            <!-- post             -->
-                            <div class="post col-xl-6">
-                                <div class="post-thumbnail shadow">
-                                    <a href="post.html"><img src="assets/img/blog-post-2.jpg" alt="..." class="img-fluid"></a>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
-                                    </div>
-                                    <a href="post.html">
-                                        <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                    </a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <div class="post-footer d-flex align-items-center">
-                                        <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="assets/img/avatar-2.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div>
-                                        </a>
-                                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- post -->
-                            <hr class="my-4">
-                            <div class="post col-xl-6">
-                                <div class="post-thumbnail shadow">
-                                    <a href="post.html"><img src="assets/img/blog-post-3.jpeg" alt="..." class="img-fluid"></a>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
-                                    </div>
-                                    <a href="post.html">
-                                        <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                    </a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <div class="post-footer d-flex align-items-center">
-                                        <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="assets/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div>
-                                        </a>
-                                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- post -->
-                            <div class="post col-xl-6">
-                                <div class="post-thumbnail shadow">
-                                    <a href="post.html"><img src="assets/img/blog-post-4.jpeg" alt="..." class="img-fluid"></a>
-                                </div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
-                                    </div>
-                                    <a href="post.html">
-                                        <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                    </a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <div class="post-footer d-flex align-items-center">
-                                        <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="assets/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div>
-                                        </a>
-                                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!-- Pagination -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-template d-flex justify-content-center">
-                                <li class="page-item">
-                                    <a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a>
-                                </li>
-                                <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
                     </div>
                 </main>
                 <aside class="col-lg-4" style="background-color: white;">
@@ -511,31 +243,9 @@ text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
                         </header>
                         <div class="blog-posts">
                             <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title" style="font-size: small;"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                <div class="item d-flex align-items-center" *ngFor="let list of createPostList.slice(6,10).reverse()">
+                                    <div class="image" *ngIf="list.approved"><img [src]="list?.imageUrl" alt="{{list?.imageName }}" class="img-fluid"></div>
+                                    <div class="title" style="font-size: small;"><strong>{{list?.title}}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> 500</div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
@@ -552,32 +262,9 @@ text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
                         </header>
                         <div class="blog-posts">
                             <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/blog-33.jpg" alt="..." class="img-fluid">
-                                    </div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/blog-post22.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="assets/img/blog-post-1.jpeg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                <div class="item d-flex align-items-center" *ngFor="let list of createPostList.slice(0,4).reverse()">
+                                    <div class="image" *ngIf="list.approved"><img [src]="list?.imageUrl" alt="{{list?.imageName }}" class="img-fluid"></div>
+                                    <div class="title"><strong>{{list?.title}}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> 500</div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>

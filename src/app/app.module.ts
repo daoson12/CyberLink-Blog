@@ -25,6 +25,8 @@ import { ReversePipe } from './pipes/reverse.pipe';
 // import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareComponent } from './components/share/share/share.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // import { ManageRoleComponent } from './components/settings/manage-role/manage-role.component';
 // import { AssignRoleComponent } from './components/settings/assign-role/assign-role.component';
 // import { UserRoleComponent } from './components/settings/user-role/user-role.component';
@@ -66,8 +68,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
   ],
   imports: [
-
-
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
